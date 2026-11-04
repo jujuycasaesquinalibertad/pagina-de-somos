@@ -24,10 +24,10 @@ El código ya está sincronizado con tu repositorio en GitHub:
 1. **Ingresa a [Render.com](https://render.com/)** y haz clic en **Sign Up / Log In** con tu cuenta de **GitHub** (`jujuycasaesquinalibertad`).
 2. Haz clic en el botón **"New +"** y selecciona **"Web Service"**.
 3. Selecciona tu repositorio: `pagina-de-somos`.
-4. Completa la configuración básica:
+4. Completa la configuración básica (o Render la detectará automáticamente con `render.yaml`):
    - **Name**: `somos-jujuy`
    - **Runtime**: `Node`
-   - **Build Command**: `npm run build`
+   - **Build Command**: `npm install && npm run build`  *(¡Importante incluir el `npm install` para instalar vite y todas las librerías!)*
    - **Start Command**: `npm start`
    - **Plan**: `Free` ($0/mes)
 5. Haz clic en **"Create Web Service"**.
