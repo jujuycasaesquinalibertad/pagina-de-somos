@@ -1,0 +1,75 @@
+.
+📄 TEXTO DEFINITIVO — WEB SOMOS JUJUY
+1. Marca y Cabecera
+Nombre del espacio: SOMOS
+Provincia: JUJUY
+Lema institucional: "NO SOMOS UNA SIGLA. SOMOS LOS QUE QUEREMOS NUESTRA TIERRA."
+Botón principal superior: Sumarme a SOMOS
+
+2. Diapositivas Cinemáticas de Apertura (Los 4 Ejes de Campaña)
+Diapositiva 01: Yungas
+Etiqueta: 01 / YUNGAS
+Localización: Yungas y Ramal Jujeño
+Titular Principal: Que la riqueza de la selva se note en la mesa.
+Bajada / Texto de Campaña: Parque Nacional Calilegua y el Ramal. Defender nuestros bienes naturales es garantizar salud pública, agua limpia y trabajo local para que las familias no tengan que elegir entre pagar la luz o comprar remedios.
+Sonido Ambiente: Brisa & Gotas de Nuboselva
+Diapositiva 02: Quebrada
+Etiqueta: 02 / QUEBRADA
+Localización: Quebrada de Humahuaca
+Titular Principal: Que nuestros pibes no tengan que irse.
+Bajada / Texto de Campaña: Serranía del Hornocal y nuestros pueblos. Soberanía es tener salarios dignos, arraigo y futuro acá. Nadie debería verse obligado a dejar su tierra por falta de oportunidades.
+Sonido Ambiente: Viento & Quena de Quebrada
+Diapositiva 03: Puna
+Etiqueta: 03 / PUNA
+Localización: Puna Jujeña
+Titular Principal: El litio es nuestro, la pobreza no puede serlo.
+Bajada / Texto de Campaña: Salinas Grandes y el altiplano. Los minerales estratégicos deben traducirse en infraestructura, escuelas y desarrollo directo para las comunidades. Basta de riqueza en origen con miseria en el territorio.
+Sonido Ambiente: Silencio & Resonancia de Sal
+Diapositiva 04: Comunidad
+Etiqueta: 04 / COMUNIDAD
+Localización: Provincia de Jujuy
+Titular Principal: Llegar a fin de mes no puede ser una hazaña.
+Bajada / Texto de Campaña: Toda la provincia. Cercanía real y dignidad material. Un espacio abierto para que tu voz en el barrio y la tecnología resuelvan problemas concretos: alquileres, tarifas y trabajo genuino.
+Sonido Ambiente: Pulso & Esperanza Popular
+3. Controles e Instrucciones de Navegación
+Botón de Acción Central (Hero): Sumarme a SOMOS Jujuy
+Indicación de Interacción: Deslizá el cursor para revelar el territorio · [← →] Navegar
+Etiqueta de Audio Encendido: Brisa & Gotas... / Viento & Quena...
+Etiqueta de Audio Apagado: Activar Sonido: [Nombre del paisaje]
+4. Modal de Afiliación y Credencial Oficial
+Formulario
+Título del Modal: Mi Credencial Digital SOMOS
+Descripción: Sumate. Tu voz en el barrio vale, y acá se escucha. Generá tu credencial y empezá a construir el Jujuy que queremos, entre todos.
+Campo Nombre: Nombre y Apellido *
+Campo Localidad: Municipio / Barrio donde vivís *
+Campo Área: ¿En qué te gustaría militar?
+Campo Teléfono: WhatsApp (Opcional) (Para avisos urgentes y novedades)
+Botón de Envío: Generar Mi Credencial
+Estado de Carga: Conectando con el Padrón Digital...
+Aviso de Transparencia: Cada credencial tiene su número único. Acá se viene a construir en conjunto, sin sombras y sin trampas.
+Textos Impresos en la Tarjeta del Carnet (Previsualización y PNG)
+Encabezado: SOMOS JUJUY
+Sello de Estado: Padrón Verificado
+Etiqueta Titular: TITULAR: [NOMBRE Y APELLIDO]
+Etiqueta Localidad: TERRITORIO: [LOCALIDAD]
+Etiqueta Área: ACCIÓN: [ÁREA]
+Etiqueta Número: ID: SOMOS-JUJ-[0101]
+Pie del QR: Validación en Padrón · PARTIDO SOMOS JUJUY
+Pie Inferior: Tu lugar en Jujuy · 2026
+Acciones del Carnet
+Botón WhatsApp: Escribir a SOMOS Jujuy con mi Credencial #[ID]
+Mensaje Pre-escrito de WhatsApp:
+«¡Hola SOMOS Jujuy! Me acabo de sumar desde [Municipio]. Mi Credencial Digital es la N° [ID] a nombre de [Nombre]. Quiero empezar a militar y participar en el área de "[Área]".»
+Botón Descarga: Descargar Credencial (PNG)
+Botón Compartir: Invitar a un vecino (Copia el texto: «Ya tengo mi Credencial de SOMOS Jujuy (#[ID]). Sumate a transformar nuestra provincia: [URL]»)
+5. Áreas de Participación / Militancia Disponibles
+Economía, Salarios y Trabajo Joven
+Organización Barrial y Territorial
+Guerrilla Digital y Comunicación
+Juventudes y Estudiantes
+Salud Pública y Educación Digna
+Litio, Ambiente y Bienes Comunes
+6. Municipios Cargados en el Selector
+San Salvador de Jujuy, Palpalá, San Pedro de Jujuy, Libertador Gral. San Martín, Perico, Tilcara, Humahuaca, La Quiaca, Abra Pampa, El Carmen, Monterrico, Calilegua, Purmamarca, Maimará, Susques, Santa Clara, Yuto, Fraile Pintado.
+🎯 HOOK FINAL (Cierre de la página)
+"NO SOMOS UNA SIGLA. SOMOS LOS QUE QUEREMOS NUESTRA TIERRA."

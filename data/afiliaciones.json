@@ -1,0 +1,14 @@
+{
+  "lastNumber": 100,
+  "afiliados": [
+    {
+      "id": "SOMOS-JUJ-0100",
+      "numeroAfiliado": "SOMOS-JUJ-0100",
+      "nombre": "Comisión Promotora Fundacional",
+      "municipio": "San Salvador de Jujuy",
+      "areaAccion": "Organización Barrial y Territorial",
+      "telefono": "",
+      "fechaRegistro": "2026-01-01T00:00:00.000Z"
+    }
+  ]
+}
