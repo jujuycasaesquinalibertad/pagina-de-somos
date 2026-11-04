@@ -13,11 +13,16 @@ import {
   IdCard,
 } from 'lucide-react';
 
+import imgYungas from './assets/images/jujuy_yungas_mist_1793819887266.jpg';
+import imgHornocal from './assets/images/jujuy_hornocal_strata_1793819888783.jpg';
+import imgSalinas from './assets/images/jujuy_salinas_grandes_1793819889557.jpg';
+import imgComunidad from './assets/images/jujuy_comunidad_encuentro_1793819889846.jpg';
+
 const SLIDE_IMAGES = [
-  '/src/assets/images/jujuy_yungas_mist_1793819887266.jpg',
-  '/src/assets/images/jujuy_hornocal_strata_1793819888783.jpg',
-  '/src/assets/images/jujuy_salinas_grandes_1793819889557.jpg',
-  '/src/assets/images/jujuy_comunidad_encuentro_1793819889846.jpg',
+  imgYungas,
+  imgHornocal,
+  imgSalinas,
+  imgComunidad,
 ];
 
 const SLIDES = CAMPAIGN_COPY.slides.map((slide, idx) => ({

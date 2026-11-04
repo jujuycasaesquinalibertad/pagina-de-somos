@@ -48,7 +48,18 @@ export const CinematicCanvas: React.FC<CinematicCanvasProps> = ({
     // 2. Carga de texturas fotográficas auténticas de Jujuy
     const textureLoader = new THREE.TextureLoader();
     const loadedTextures = slides.map((slide) => {
-      const tex = textureLoader.load(slide.imagePath);
+      const tex = textureLoader.load(
+        slide.imagePath,
+        () => {
+          if (materialRef.current) {
+            materialRef.current.needsUpdate = true;
+          }
+        },
+        undefined,
+        (err) => {
+          console.warn(`[CinematicCanvas] Error cargando textura ${slide.imagePath}:`, err);
+        }
+      );
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.minFilter = THREE.LinearFilter;
       tex.magFilter = THREE.LinearFilter;
