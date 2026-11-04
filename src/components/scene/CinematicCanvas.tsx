@@ -183,7 +183,7 @@ export const CinematicCanvas: React.FC<CinematicCanvasProps> = ({
     const particlePoints = new THREE.Points(particleGeo, particleMat);
     scene.add(particlePoints);
 
-    // 5. Manejo del Cursor con Inercia Líquida
+    // 5. Manejo del Cursor y Táctil con Inercia Líquida
     const handleMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
       const nx = (e.clientX - rect.left) / rect.width;
@@ -192,7 +192,19 @@ export const CinematicCanvas: React.FC<CinematicCanvasProps> = ({
       mouseRef.current.targetY = ny;
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        const rect = container.getBoundingClientRect();
+        const nx = (touch.clientX - rect.left) / rect.width;
+        const ny = 1.0 - (touch.clientY - rect.top) / rect.height;
+        mouseRef.current.targetX = nx;
+        mouseRef.current.targetY = ny;
+      }
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     const handleResize = () => {
       if (!container || !renderer || !materialRef.current) return;
@@ -253,6 +265,7 @@ export const CinematicCanvas: React.FC<CinematicCanvasProps> = ({
     return () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('resize', handleResize);
 
       quad.geometry.dispose();
