@@ -13,15 +13,16 @@ import {
   IdCard,
 } from 'lucide-react';
 
-import imgYungas from './assets/images/jujuy_yungas_mist_1793819887266.jpg';
-import imgHornocal from './assets/images/jujuy_hornocal_strata_1793819888783.jpg';
-import imgSalinas from './assets/images/jujuy_salinas_grandes_1793819889557.jpg';
-import imgComunidad from './assets/images/jujuy_comunidad_encuentro_1793819889846.jpg';
+// Fotografías reales documentales de Jujuy bajo licencia libre Creative Commons
+import imgYungas from './assets/images/real_yungas_desktop.jpg';
+import imgHornocal from './assets/images/real_hornocal_desktop.jpg';
+import imgSalinas from './assets/images/real_salinas_desktop.jpg';
+import imgComunidad from './assets/images/real_comunidad_desktop.jpg';
 
-import imgYungasPortrait from './assets/images/yungas_portrait_1793877957766.jpg';
-import imgHornocalPortrait from './assets/images/hornocal_portrait_1793877969967.jpg';
-import imgSalinasPortrait from './assets/images/salinas_portrait_1793877981746.jpg';
-import imgComunidadPortrait from './assets/images/comunidad_portrait_1793877997102.jpg';
+import imgYungasPortrait from './assets/images/real_yungas_mobile.jpg';
+import imgHornocalPortrait from './assets/images/real_hornocal_mobile.jpg';
+import imgSalinasPortrait from './assets/images/real_salinas_mobile.jpg';
+import imgComunidadPortrait from './assets/images/real_comunidad_mobile.jpg';
 
 const SLIDE_IMAGES = [
   imgYungas,
