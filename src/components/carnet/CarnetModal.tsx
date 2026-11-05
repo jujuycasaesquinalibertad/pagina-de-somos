@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { soundscape } from '../../audio/soundscape';
 import { CAMPAIGN_COPY } from '../../data/campaignCopy';
+import somosLogoImg from '../../assets/logo/somos_logo.png';
 
 interface CarnetModalProps {
   isOpen: boolean;
@@ -413,13 +414,7 @@ export const CarnetModal: React.FC<CarnetModalProps> = ({
 
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="flex items-center font-black font-montserrat text-2xl text-white tracking-wider">
-                    <span>SOM</span>
-                    <span className="inline-block w-5 h-5 mx-0.5 rounded-full bg-[#00AEEF] border border-white flex items-center justify-center">
-                      <span className="w-2 h-2 rounded-full bg-[#F8C300]" />
-                    </span>
-                    <span>S</span>
-                  </div>
+                  <img src={somosLogoImg} alt="SOMOS Jujuy" className="h-7 w-auto object-contain drop-shadow-sm mb-1" />
                   <p className="text-[10px] font-bold tracking-[0.25em] text-[#00AEEF] uppercase">
                     {CAMPAIGN_COPY.carnetModal.cardDesign.headerCategory}
                   </p>

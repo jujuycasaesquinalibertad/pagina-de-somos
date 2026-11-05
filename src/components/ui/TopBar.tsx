@@ -11,7 +11,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onOpenCarnet }) => {
     <header className="fixed top-0 left-0 right-0 z-40 h-14 sm:h-16 px-3 sm:px-8 flex items-center justify-between gap-2 sm:gap-6 bg-[#0C2340]/90 backdrop-blur-md border-b border-white/10 select-none">
       {/* Logotipo Oficial SOMOS Jujuy */}
       <div className="flex items-center shrink-0">
-        <SomosLogo size="sm" showSubtitle={true} variant="light" className="scale-90 sm:scale-100 origin-left" />
+        <SomosLogo size="md" showSubtitle={true} variant="light" className="origin-left" />
       </div>
 
       {/* Redes Sociales Oficiales y Acción Primaria */}
