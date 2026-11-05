@@ -286,19 +286,19 @@ export const CarnetModal: React.FC<CarnetModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-4xl bg-[#0C2340] border border-[#00AEEF]/50 rounded-2xl shadow-2xl overflow-hidden my-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
+      <div className="relative w-full max-w-4xl bg-[#0C2340] border border-[#00AEEF]/50 rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[95dvh] flex flex-col">
         {/* Cabecera del Modal */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#0C2340]">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#EE007C] flex items-center justify-center text-white">
-              <UserCheck className="w-5 h-5" />
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-white/10 bg-[#0C2340] shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#EE007C] flex items-center justify-center text-white shrink-0">
+              <UserCheck className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div>
-              <h2 className="text-lg font-bold font-montserrat text-white">
+              <h2 className="text-base sm:text-lg font-bold font-montserrat text-white leading-tight">
                 {CAMPAIGN_COPY.carnetModal.title}
               </h2>
-              <p className="text-xs text-slate-400">
+              <p className="text-[11px] sm:text-xs text-slate-400 line-clamp-1">
                 {CAMPAIGN_COPY.carnetModal.description}
               </p>
             </div>
@@ -308,7 +308,7 @@ export const CarnetModal: React.FC<CarnetModalProps> = ({
               soundscape.playClick();
               onClose();
             }}
-            className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+            className="p-1.5 sm:p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors cursor-pointer shrink-0"
             aria-label="Cerrar modal"
           >
             <X className="w-5 h-5" />
@@ -316,9 +316,9 @@ export const CarnetModal: React.FC<CarnetModalProps> = ({
         </div>
 
         {/* Formulario y Carnet */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6">
+        <div className="overflow-y-auto p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
           <div className="lg:col-span-5 flex flex-col justify-between">
-            <form onSubmit={handleSubmitForm} className="space-y-4">
+            <form onSubmit={handleSubmitForm} className="space-y-3.5 sm:space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
                   {CAMPAIGN_COPY.carnetModal.form.nombreLabel}
