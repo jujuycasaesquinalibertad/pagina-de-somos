@@ -7,8 +7,6 @@ import { CAMPAIGN_COPY } from './data/campaignCopy';
 import {
   Volume2,
   VolumeX,
-  ChevronLeft,
-  ChevronRight,
   ArrowRight,
   IdCard,
 } from 'lucide-react';
@@ -170,67 +168,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* 4. Barra de Navegación de Diapositivas (Dock Inferior Minimalista) */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-white/10 pointer-events-auto">
-          {/* Selector de Paisajes */}
-          <div className="flex items-center gap-2 overflow-x-auto max-w-full">
-            {SLIDES.map((slide, idx) => {
-              const isActive = currentSlide === idx;
-              return (
-                <button
-                  key={slide.id}
-                  onClick={() => {
-                    soundscape.playRegionTransition(idx);
-                    setCurrentSlide(idx);
-                  }}
-                  className={`px-3 py-1.5 rounded-lg text-xs transition-all flex items-center gap-2 whitespace-nowrap cursor-pointer ${
-                    isActive
-                      ? 'bg-white text-[#0C2340] font-bold shadow-lg'
-                      : 'bg-black/40 text-slate-300 hover:text-white hover:bg-black/60 border border-white/5'
-                  }`}
-                >
-                  <span
-                    className={`w-1.5 h-1.5 rounded-full ${
-                      isActive ? 'bg-[#EE007C]' : 'bg-slate-400'
-                    }`}
-                  />
-                  <span>{slide.tag.split(' / ')[1]}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Flechas de Navegación Anterior / Siguiente */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => {
-                soundscape.playClick();
-                setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
-              }}
-              className="p-2.5 bg-black/40 hover:bg-black/70 border border-white/15 rounded-xl text-white transition-colors cursor-pointer"
-              title="Anterior [←]"
-              aria-label={CAMPAIGN_COPY.controls.previousAria}
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-
-            <span className="text-xs font-mono text-slate-300 px-2">
-              0{currentSlide + 1} / 0{SLIDES.length}
-            </span>
-
-            <button
-              onClick={() => {
-                soundscape.playClick();
-                setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-              }}
-              className="p-2.5 bg-black/40 hover:bg-black/70 border border-white/15 rounded-xl text-white transition-colors cursor-pointer"
-              title="Siguiente [→]"
-              aria-label={CAMPAIGN_COPY.controls.nextAria}
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
       </div>
 
       {/* 5. Modal de Carnet Oficial de Afiliación (Padrón Permanente con Números Únicos) */}
