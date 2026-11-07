@@ -47,7 +47,7 @@ export const CAMPAIGN_COPY = {
       location: 'Provincia de Jujuy',
       title: 'Llegar a fin de mes no puede ser una hazaña.',
       subtitle:
-        'Toda la provincia. Cercanía real y dignidad material. Un espacio abierto para que tu voz en el barrio y la tecnología resuelvan problemas concretos: alquileres, tarifas y trabajo genuino.',
+        'Eso es lo que preguntan en toda la provincia. Por eso este espacio es abierto para que tu voz en el barrio y la tecnología resuelvan problemas concretos: alquileres, tarifas y trabajo genuino.',
       soundName: 'Pulso & Esperanza Popular',
     },
   ],

@@ -8,7 +8,6 @@ interface CinematicCanvasProps {
     title: string;
     subtitle: string;
     imagePath: string;
-    mobileImagePath?: string;
   }[];
 }
 
@@ -17,9 +16,7 @@ export const CinematicCanvas: React.FC<CinematicCanvasProps> = ({
   slides,
 }) => {
   const mountRef = useRef<HTMLDivElement | null>(null);
-  const desktopTexturesRef = useRef<THREE.Texture[]>([]);
-  const mobileTexturesRef = useRef<THREE.Texture[]>([]);
-  const isPortraitRef = useRef<boolean>(false);
+  const texturesRef = useRef<THREE.Texture[]>([]);
   const materialRef = useRef<THREE.ShaderMaterial | null>(null);
   const mouseRef = useRef({ x: 0.5, y: 0.5, targetX: 0.5, targetY: 0.5, speed: 0 });
   const prevSlideRef = useRef(currentSlideIndex);
@@ -33,15 +30,6 @@ export const CinematicCanvas: React.FC<CinematicCanvasProps> = ({
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
-
-    const checkIsPortrait = () => {
-      const w = container.clientWidth || window.innerWidth;
-      const h = container.clientHeight || window.innerHeight;
-      return w < 768 || w < h;
-    };
-
-    const isPortrait = checkIsPortrait();
-    isPortraitRef.current = isPortrait;
 
     // 1. Renderer WebGL
     const renderer = new THREE.WebGLRenderer({
@@ -57,12 +45,11 @@ export const CinematicCanvas: React.FC<CinematicCanvasProps> = ({
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
-    // 2. Carga de texturas fotográficas auténticas de Jujuy (Dual: Desktop 16:9 + Móvil 9:16)
+    // 2. Carga de texturas fotográficas auténticas de Jujuy
     const textureLoader = new THREE.TextureLoader();
-
-    const loadTex = (url: string) => {
+    const loadedTextures = slides.map((slide) => {
       const tex = textureLoader.load(
-        url,
+        slide.imagePath,
         () => {
           if (materialRef.current) {
             materialRef.current.needsUpdate = true;
@@ -70,23 +57,15 @@ export const CinematicCanvas: React.FC<CinematicCanvasProps> = ({
         },
         undefined,
         (err) => {
-          console.warn(`[CinematicCanvas] Error cargando textura ${url}:`, err);
+          console.warn(`[CinematicCanvas] Error cargando textura ${slide.imagePath}:`, err);
         }
       );
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.minFilter = THREE.LinearFilter;
       tex.magFilter = THREE.LinearFilter;
       return tex;
-    };
-
-    const loadedDesktopTextures = slides.map((s) => loadTex(s.imagePath));
-    const loadedMobileTextures = slides.map((s) => loadTex(s.mobileImagePath || s.imagePath));
-
-    desktopTexturesRef.current = loadedDesktopTextures;
-    mobileTexturesRef.current = loadedMobileTextures;
-
-    const initialTextures = isPortrait ? loadedMobileTextures : loadedDesktopTextures;
-    const initialImgRes = isPortrait ? new THREE.Vector2(768, 1376) : new THREE.Vector2(1376, 768);
+    });
+    texturesRef.current = loadedTextures;
 
     // 3. Shader GLSL de Distorsión Líquida e Interacción de Ondas (Estilo Awwwards / OHZI)
     const vertexShader = `
@@ -164,13 +143,13 @@ export const CinematicCanvas: React.FC<CinematicCanvasProps> = ({
       vertexShader,
       fragmentShader,
       uniforms: {
-        uTextureCurrent: { value: initialTextures[currentSlideIndex] || null },
-        uTexturePrev: { value: initialTextures[currentSlideIndex] || null },
+        uTextureCurrent: { value: loadedTextures[currentSlideIndex] || null },
+        uTexturePrev: { value: loadedTextures[currentSlideIndex] || null },
         uProgress: { value: 1.0 },
         uMouse: { value: new THREE.Vector2(0.5, 0.5) },
         uTime: { value: 0.0 },
         uResolution: { value: new THREE.Vector2(container.clientWidth, container.clientHeight) },
-        uImageResolution: { value: initialImgRes },
+        uImageResolution: { value: new THREE.Vector2(1920, 1080) },
       },
     });
     materialRef.current = shaderMaterial;
@@ -244,21 +223,6 @@ export const CinematicCanvas: React.FC<CinematicCanvasProps> = ({
       const h = container.clientHeight;
       renderer.setSize(w, h);
       materialRef.current.uniforms.uResolution.value.set(w, h);
-
-      const newlyPortrait = checkIsPortrait();
-      if (newlyPortrait !== isPortraitRef.current) {
-        isPortraitRef.current = newlyPortrait;
-        const currentSet = newlyPortrait ? mobileTexturesRef.current : desktopTexturesRef.current;
-        materialRef.current.uniforms.uImageResolution.value.set(
-          newlyPortrait ? 768 : 1376,
-          newlyPortrait ? 1376 : 768
-        );
-        if (currentSet[currentSlideIndex]) {
-          materialRef.current.uniforms.uTextureCurrent.value = currentSet[currentSlideIndex];
-          materialRef.current.uniforms.uTexturePrev.value = currentSet[currentSlideIndex];
-          materialRef.current.needsUpdate = true;
-        }
-      }
     };
 
     window.addEventListener('resize', handleResize);
@@ -325,22 +289,17 @@ export const CinematicCanvas: React.FC<CinematicCanvasProps> = ({
         container.removeChild(renderer.domElement);
       }
     };
-  }, [slides, currentSlideIndex]);
+  }, [slides]);
 
   // Actualización de texturas al cambiar de diapositiva
   useEffect(() => {
-    if (materialRef.current) {
-      const activeTextures = isPortraitRef.current
-        ? mobileTexturesRef.current
-        : desktopTexturesRef.current;
-      if (activeTextures.length > 0) {
-        const prevTex = materialRef.current.uniforms.uTextureCurrent.value;
-        const nextTex = activeTextures[currentSlideIndex] || prevTex;
-        materialRef.current.uniforms.uTexturePrev.value = prevTex;
-        materialRef.current.uniforms.uTextureCurrent.value = nextTex;
-        materialRef.current.uniforms.uProgress.value = 0.0;
-        transitionProgress.current = 0.0;
-      }
+    if (materialRef.current && texturesRef.current.length > 0) {
+      const prevTex = materialRef.current.uniforms.uTextureCurrent.value;
+      const nextTex = texturesRef.current[currentSlideIndex];
+      materialRef.current.uniforms.uTexturePrev.value = prevTex;
+      materialRef.current.uniforms.uTextureCurrent.value = nextTex;
+      materialRef.current.uniforms.uProgress.value = 0.0;
+      transitionProgress.current = 0.0;
     }
   }, [currentSlideIndex]);
 
